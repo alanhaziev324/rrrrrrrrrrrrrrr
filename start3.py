@@ -54,16 +54,6 @@ def main1():
     return '''<img src="/static/img/1.jpg" alt="здесь должна была быть картинка, но не нашлась">'''
 
 
-@app.route('/otzivi1', methods=['GET'])
-def main5():
-    return '''<img src="/static/img/2.jpg" alt="здесь должна была быть картинка, но не нашлась">'''
-
-
-@app.route('/otzivi11', methods=['GET'])
-def main55():
-    return '''<img src="/static/img/3.jpg" alt="здесь должна была быть картинка, но не нашлась">'''
-
-
 @app.route('/astronaut_selection', methods=['POST', 'GET'])
 def astronaut_selection():
     if request.method == 'GET':
