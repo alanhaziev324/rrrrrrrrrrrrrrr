@@ -9,13 +9,13 @@ from flask import Flask, render_template, redirect, url_for, request
 @app.route('/auto_answer')
 def auto_answer():
     profil = {}
-    profil['title'] = 'Анкета'
-    profil['surname'] = 'Watny'
-    profil['name'] = 'Mark'
-    profil['education'] = 'выше среднего'
-    profil['profession'] = 'штурман марсохода'
-    profil['sex'] = 'male'
-    profil['motivation'] = 'Всегда мечтал застрять на Марсе!'
+    profil['title'] = ''
+    profil['surname'] = ''
+    profil['name'] = ''
+    profil['education'] = ''
+    profil['profession'] = ''
+    profil['sex'] = ''
+    profil['motivation'] = ''
     profil['ready'] = 'True'
     return render_template('auto_answer.html', **profil)
 
