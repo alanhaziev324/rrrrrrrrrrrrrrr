@@ -5,6 +5,21 @@ import flask_sqlalchemy
 from flask import Flask, render_template, redirect, url_for, request
 
 
+@app.route('/answer')
+@app.route('/auto_answer')
+def auto_answer():
+    profil = {}
+    profil['title'] = 'Анкета'
+    profil['surname'] = 'Watny'
+    profil['name'] = 'Mark'
+    profil['education'] = 'выше среднего'
+    profil['profession'] = 'штурман марсохода'
+    profil['sex'] = 'male'
+    profil['motivation'] = 'Всегда мечтал застрять на Марсе!'
+    profil['ready'] = 'True'
+    return render_template('auto_answer.html', **profil)
+
+
 class MapParams(object):
     def __init__(self):
         self.lat = 61.665279
@@ -30,7 +45,30 @@ def load_map(mp):
     # Запись полученного изображения в файл.
     map_file = "1.jpg"
 
+class LoginForm(FlaskForm):
+    userid = StringField('Id астронавта', validators=[DataRequired()])
+    password_1 = PasswordField('Пароль астронавта', validators=[DataRequired()])
+    cap_id = StringField('Id капитана', validators=[DataRequired()])
+    password_2 = PasswordField('Пароль капитана', validators=[DataRequired()])
+    submit = SubmitField('Доступ')
 
+
+@app.route('/login1', methods=['GET', 'POST'])
+def login():
+    form = LoginForm()
+    if form.validate_on_submit():
+        return redirect('/success')
+    return render_template('login.html', title='Аварийный доступ', form=form)
+    def main():
+    global_init(input())
+
+    session = create_session()
+
+    for job in session.query(Jobs).filter((Jobs.work_size < 20),
+                                          Jobs.is_finished == 0):
+        print(job)
+    
+    
 app = Flask(__name__)
 
 Message = namedtuple('Message', 'text tag')
